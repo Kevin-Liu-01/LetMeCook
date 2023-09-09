@@ -25,6 +25,7 @@
     "npm": "^10.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-image-crop": "^10.1.8",
     "react-webcam": "^7.1.1",
     "superjson": "^1.13.1",
     "zod": "^3.21.4"

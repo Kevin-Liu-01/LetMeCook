@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         primary: ["Archivo", "Inter"],
-        secondary: ["Inter"],
+        secondary: ["Archivo", "Inter"],
       },
       colors: {
         primary: "#FF724C",
