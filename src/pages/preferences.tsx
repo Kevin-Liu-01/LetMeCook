@@ -13,7 +13,7 @@ export default function Preferences() {
       </Head>
       <div className="font-primary flex h-screen w-full flex-col items-center justify-center gap-12">
         <Grid columns="2" gap="0" width="100%" height="100%">
-          <Box className="from-primary to-secondary align-center col-span-2 flex h-full flex-col justify-center bg-gradient-to-b p-6 sm:col-span-1 sm:p-12">
+          <Box className="from-primary to-secondary align-center col-span-2 flex h-screen flex-col justify-center bg-gradient-to-b p-6 sm:col-span-1 sm:p-12">
             <Form />
           </Box>
 

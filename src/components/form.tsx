@@ -40,7 +40,7 @@ export default function Form() {
         </h1>
         <SelectSeparator />
         <Text size="4">Meal</Text>
-        <RadioGroup.Root defaultValue="breakfast" onValueChange={setMeal}>
+        <RadioGroup.Root onValueChange={setMeal}>
           <Flex gap="2" direction="column">
             <label>
               <Flex gap="2" align="center">
@@ -144,7 +144,7 @@ export default function Form() {
         />
         <Text>{minutes() || 0} minutes</Text>
         <SelectSeparator />
-        <Link href="/preferences">
+        <Link href="/camera">
           <Button className="font-secondary w-48 hover:animate-pulse">
             Scan my Fridge <ArrowRightIcon className="h-4 w-4" />
           </Button>
