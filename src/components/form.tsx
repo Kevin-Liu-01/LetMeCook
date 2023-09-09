@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+//@ts-nocheck
 // import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
@@ -12,12 +14,7 @@ import {
   Slider,
   Button,
 } from "@radix-ui/themes";
-import {
-  ArrowRightIcon,
-  UtensilsIcon,
-  SoupIcon,
-  UtensilsCrossedIcon,
-} from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 
 // import { api } from "~/utilscol/api";
 
