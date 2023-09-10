@@ -4,10 +4,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <Section className="bg-secondary relative w-full flex-col overflow-hidden px-12">
+    <Section className="from-secondary to-primary relative w-full flex-col overflow-hidden bg-gradient-to-b px-12">
       <Image
         src="/assets/letmecook.svg"
-        className="relative z-10"
+        className="bg-secondary relative z-10 rounded-md p-2"
         alt="logo"
         width="300"
         height="300"

@@ -73,7 +73,7 @@ export default function Home() {
                   <Camera className="ml-1 h-4 w-4" />
                 </button>
               </Link>
-              <Link href="/About">
+              <Link href="#howitworks">
                 <button className="border-dark font-secondary flex items-center rounded-md border px-2 py-1   hover:animate-pulse">
                   How it works
                   <ArrowRightIcon className="h-4 w-4" />
@@ -86,7 +86,7 @@ export default function Home() {
             // gap="2"
           ></Box>
         </Grid>
-        <Section className="bg-secondary w-full px-12">
+        <Section className="from-secondary to-primary w-full bg-gradient-to-r px-12">
           <div className="grid sm:grid-cols-2">
             <div className="font-primary flex h-full flex-col justify-center text-4xl font-black">
               SPEND LESS TIME WORRYING.{" "}
@@ -128,7 +128,7 @@ export default function Home() {
             </div>
           </div>
         </Section>
-        <Section className="bg-primary flex w-full justify-center px-12">
+        <Section className="from-secondary to-primary flex w-full justify-center bg-gradient-to-l px-12">
           <div className="font-primary text-4xl font-black">
             THE AVERAGE AMERICAN WASTES 238 LBS. OF FOOD PER YEAR.{" "}
             <p className="text-white">{"THAT'S $1,800 PER YEAR."}</p>
@@ -160,7 +160,7 @@ export default function Home() {
 
               <div className="mt-2 w-64 text-center text-sm text-gray-600">
                 {
-                  "Our AI will detect the ingredients inside. Don't worry, we don't save your images."
+                  "Our AI will detect the ingredients in your fridge to design a yummy meal."
                 }
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function Home() {
               </div>
               <div className="mt-2 w-64 text-center text-sm text-gray-600">
                 View your new recipe and start cooking! We provide a full list
-                of nutrients and ingredients.
+                of ingredients.
               </div>
             </div>
           </div>
