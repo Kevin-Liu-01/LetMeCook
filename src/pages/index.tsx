@@ -57,16 +57,16 @@ export default function Home() {
             </h2>
 
             <Text className="mt-4 flex flex-col items-start gap-2 sm:flex-row sm:items-center">
-              <Link href="/preferences">
-                <button className="border-dark font-secondary flex items-center rounded-md border px-2 py-1 hover:animate-pulse ">
-                  Customize Recipe
-                  <ArrowRightIcon className="h-4 w-4" />
-                </button>
-              </Link>
               <Link href="/camera">
                 <button className="bg-primary text-light border-dark font-secondary flex items-center rounded-md border px-2 py-1 hover:animate-pulse">
                   Scan Ingredients
                   <Camera className="ml-1 h-4 w-4" />
+                </button>
+              </Link>
+              <Link href="/About">
+                <button className="border-dark font-secondary flex items-center rounded-md border px-2 py-1 hover:animate-pulse ">
+                  How it works
+                  <ArrowRightIcon className="h-4 w-4" />
                 </button>
               </Link>
             </Text>

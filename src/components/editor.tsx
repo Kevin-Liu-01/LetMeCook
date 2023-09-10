@@ -7,11 +7,13 @@ import ReactCrop, { type Crop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { Flex, Text, ScrollArea, SelectSeparator } from "@radix-ui/themes";
 import { CornerRightDown, Scan, Undo } from "lucide-react";
-export default function CameraButton({
+export default function Editor({
   image,
+  setCropped,
   setImage,
 }: {
   image: string;
+  setCropped: (state: string) => void;
   setImage: (state: string) => void;
 }) {
   const [crop, setCrop] = useState<Crop>({
@@ -43,6 +45,7 @@ export default function CameraButton({
     if (image) {
       getCroppedImage(image, croppedCrop, (croppedImg) => {
         setCroppedImage(croppedImg);
+        setCropped(croppedImg);
       });
     }
   };

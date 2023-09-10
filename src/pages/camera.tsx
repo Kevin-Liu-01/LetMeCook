@@ -23,7 +23,6 @@ import {
   FlipHorizontal,
   RotateCcw,
   CameraOff,
-  Scan,
   UserSquare,
   FileEdit,
 } from "lucide-react";

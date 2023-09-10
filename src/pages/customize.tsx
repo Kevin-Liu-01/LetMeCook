@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
 import Head from "next/head";
 import { useState } from "react";
 import { Box, Grid } from "@radix-ui/themes";
@@ -10,6 +12,8 @@ import Editor from "../components/editor";
 export default function Customize() {
   const searchParams = useSearchParams();
   const [image, setImage] = useState(searchParams?.get("image"));
+  const [cropped, setCropped] = useState(searchParams?.get("image"));
+
   return (
     <>
       <Head>
@@ -18,7 +22,7 @@ export default function Customize() {
       <div className="font-primary flex h-screen w-full flex-col items-center justify-center gap-12">
         <Grid columns="2" gap="0" width="100%" height="100%">
           <Box className="from-primary to-secondary align-center col-span-2 flex h-screen flex-col justify-center bg-gradient-to-b p-6 sm:col-span-1 sm:p-12">
-            <Form />
+            <Form image={cropped} />
           </Box>
 
           <Box
@@ -26,7 +30,11 @@ export default function Customize() {
             // direction="column"
             // gap="2"
           >
-            <Editor image={image ?? ""} setImage={setImage} />
+            <Editor
+              image={image ?? ""}
+              setCropped={setCropped}
+              setImage={setImage}
+            />
           </Box>
         </Grid>
       </div>

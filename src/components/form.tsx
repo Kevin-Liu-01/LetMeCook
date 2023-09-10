@@ -18,11 +18,26 @@ import { ArrowRightIcon } from "lucide-react";
 
 // import { api } from "~/utilscol/api";
 
-export default function Form() {
+export default function Form({ image }: { image: string }) {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
   const [calories, setCalories] = useState(100);
   const [time, setTime] = useState(300); // 5 minutes (300 seconds)
   const [meal, setMeal] = useState("breakfast"); // 5 minutes (300 seconds)
+  const [vegetarian, setVegetarian] = useState(false);
+  const [vegan, setVegan] = useState(false);
+  const [eggetarian, setEggetarian] = useState(false);
+  const [pescatarian, setPescatarian] = useState(false);
+  const [keto, setKeto] = useState(false);
+  const [paleo, setPaleo] = useState(false);
+  const [peanut, setPeanut] = useState(false);
+  const [egg, setEgg] = useState(false);
+  const [milk, setMilk] = useState(false);
+  const [shellfish, setShellfish] = useState(false);
+  const [wheat, setWheat] = useState(false);
+  const [soy, setSoy] = useState(false);
+  const [stove, setStove] = useState(false);
+  const [microwave, setMicrowave] = useState(false);
+  const [oven, setOven] = useState(false);
 
   const minutes = () => {
     return new Date(time * 1000).toISOString().slice(11, 19);
@@ -31,7 +46,6 @@ export default function Form() {
   return (
     <>
       <ScrollArea
-        type="always"
         scrollbars="vertical"
         className="bg-light h-full rounded-md p-4"
       >
@@ -66,44 +80,65 @@ export default function Form() {
         <Text size="4">Dietary Restrictions?</Text>
         <Grid columns="3" gap="3">
           <label>
-            <Checkbox mr="1" /> Vegetarian
+            <Checkbox
+              mr="1"
+              checked={vegetarian}
+              onCheckedChange={setVegetarian}
+            />
+            Vegetarian
           </label>
           <label>
-            <Checkbox mr="1" /> Vegan
+            <Checkbox mr="1" checked={vegan} onCheckedChange={setVegan} /> Vegan
           </label>
           <label>
-            <Checkbox mr="1" /> Eggetarian
+            <Checkbox
+              mr="1"
+              checked={eggetarian}
+              onCheckedChange={setEggetarian}
+            />
+            Eggetarian
           </label>
           <label>
-            <Checkbox mr="1" /> Pescatarian
+            <Checkbox
+              mr="1"
+              checked={pescatarian}
+              onCheckedChange={setPescatarian}
+            />
+            Pescatarian
           </label>
           <label>
-            <Checkbox mr="1" /> Protein-Inclusive
+            <Checkbox mr="1" checked={keto} onCheckedChange={setKeto} /> Keto
           </label>
           <label>
-            <Checkbox mr="1" /> Dairy-Exclusive
+            <Checkbox mr="1" checked={paleo} onCheckedChange={setPaleo} /> Paleo
           </label>
         </Grid>
         <SelectSeparator />
         <Text size="4">Allergies?</Text>
         <Grid columns="3" gap="3">
           <label>
-            <Checkbox mr="1" /> Peanut
+            <Checkbox mr="1" checked={peanut} onCheckedChange={setPeanut} />{" "}
+            Peanut
           </label>
           <label>
-            <Checkbox mr="1" /> Egg
+            <Checkbox mr="1" checked={egg} onCheckedChange={setEgg} /> Egg
           </label>
           <label>
-            <Checkbox mr="1" /> Milk
+            <Checkbox mr="1" checked={milk} onCheckedChange={setMilk} /> Milk
           </label>
           <label>
-            <Checkbox mr="1" /> Shellfish
+            <Checkbox
+              mr="1"
+              checked={shellfish}
+              onCheckedChange={setShellfish}
+            />{" "}
+            Shellfish
           </label>
           <label>
-            <Checkbox mr="1" /> Wheat
+            <Checkbox mr="1" checked={wheat} onCheckedChange={setWheat} /> Wheat
           </label>
           <label>
-            <Checkbox mr="1" /> Soy
+            <Checkbox mr="1" checked={soy} onCheckedChange={setSoy} /> Soy
           </label>
         </Grid>
         <SelectSeparator />
@@ -123,13 +158,18 @@ export default function Form() {
 
         <Grid columns="3" gap="3">
           <label>
-            <Checkbox mr="1" /> Stove
+            <Checkbox mr="1" checked={stove} onCheckedChange={setStove} /> Stove
           </label>
           <label>
-            <Checkbox mr="1" /> Microwave
+            <Checkbox
+              mr="1"
+              checked={microwave}
+              onCheckedChange={setMicrowave}
+            />{" "}
+            Microwave
           </label>
           <label>
-            <Checkbox mr="1" /> Oven
+            <Checkbox mr="1" checked={oven} onCheckedChange={setOven} /> Oven
           </label>
         </Grid>
         <SelectSeparator />
@@ -144,36 +184,45 @@ export default function Form() {
         />
         <Text>{minutes() || 0} minutes</Text>
         <SelectSeparator />
-        <Link href="/camera">
-          <Button className="font-secondary w-48 hover:animate-pulse">
-            Scan my Fridge <ArrowRightIcon className="h-4 w-4" />
-          </Button>
-        </Link>
+        <Flex gap="3">
+          <Link
+            href={{
+              pathname: "/recipe",
+              query: {
+                image,
+                calories,
+                time,
+                meal,
+                vegetarian,
+                vegan,
+                eggetarian,
+                pescatarian,
+                keto,
+                paleo,
+                peanut,
+                egg,
+                milk,
+                shellfish,
+                wheat,
+                soy,
+                stove,
+                microwave,
+                oven,
+              },
+            }}
+          >
+            {" "}
+            <Button className="font-secondary w-48 hover:animate-pulse">
+              Use parameters <ArrowRightIcon className="h-4 w-4" />
+            </Button>
+          </Link>
+          <Link href="/recipe">
+            <button className="border-dark font-secondary flex h-full w-48 items-center justify-center rounded-md border hover:animate-pulse">
+              <Text size="2">Skip</Text> <ArrowRightIcon className="h-4 w-4" />
+            </button>
+          </Link>
+        </Flex>
       </ScrollArea>
     </>
   );
 }
-
-// function AuthShowcase() {
-//   const { data: sessionData } = useSession();
-
-//   const { data: secretMessage } = api.example.getSecretMessage.useQuery(
-//     undefined, // no input
-//     { enabled: sessionData?.user !== undefined },
-//   );
-
-//   return (
-//     <div className="flex flex-col items-center justify-center gap-4">
-//       <p className="text-center text-2xl text-white">
-//         {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-//         {secretMessage && <span> - {secretMessage}</span>}
-//       </p>
-//       <button
-//         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-//         onClick={sessionData ? () => void signOut() : () => void signIn()}
-//       >
-//         {sessionData ? "Sign out" : "Sign in"}
-//       </button>
-//     </div>
-//   );
-// }
