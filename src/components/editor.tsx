@@ -5,7 +5,13 @@ import { useState } from "react";
 import Link from "next/link";
 import ReactCrop, { type Crop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
-import { Flex, Text, ScrollArea, SelectSeparator } from "@radix-ui/themes";
+import {
+  Flex,
+  Text,
+  ScrollArea,
+  SelectSeparator,
+  Tooltip,
+} from "@radix-ui/themes";
 import { CornerRightDown, Scan, Undo } from "lucide-react";
 export default function Editor({
   image,
@@ -98,34 +104,39 @@ export default function Editor({
     <ScrollArea
       type="always"
       scrollbars="vertical"
-      className="mx-auto my-auto flex items-center justify-center p-6 sm:h-screen sm:p-12"
+      className="mx-auto my-auto flex items-center justify-center  sm:h-screen"
     >
-      <div className="">
+      <div className="p-6 sm:p-12">
         <h2 className="text-dark text-3xl font-extrabold tracking-tight  ">
           EDITOR
         </h2>
         <SelectSeparator />
         <Flex gap="3">
-          <Link href="/camera">
-            <button className="border-dark hover:bg-primary font-secondary flex h-full items-center rounded-md border px-2 py-1 duration-150 hover:animate-pulse ">
-              Scan Again
-              <Scan className="ml-1 h-4 w-4" />
+          <Tooltip content="Scan another image">
+            <Link href="/camera">
+              <button className="border-dark hover:bg-primary font-secondary flex h-full items-center rounded-md border px-2 py-1 duration-150 hover:animate-pulse ">
+                Scan Again
+                <Scan className="ml-1 h-4 w-4" />
+              </button>
+            </Link>
+          </Tooltip>
+          <Tooltip content="Upload another image">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="border-dark hover:bg-primary font-secondary hidden items-center rounded-md border px-2 py-1 duration-150 sm:flex"
+            />
+          </Tooltip>
+          <Tooltip content="Revert to original image">
+            <button
+              className="border-dark hover:bg-primary font-secondary flex items-center rounded-md border px-2 py-1 duration-150 hover:animate-pulse"
+              onClick={revertImage}
+            >
+              Revert
+              <Undo className="ml-1 h-4 w-4" />
             </button>
-          </Link>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="border-dark hover:bg-primary font-secondary hidden items-center rounded-md border px-2 py-1 duration-150 sm:flex"
-          />
-
-          <button
-            className="border-dark hover:bg-primary font-secondary flex items-center rounded-md border px-2 py-1 duration-150 hover:animate-pulse"
-            onClick={revertImage}
-          >
-            Revert
-            <Undo className="ml-1 h-4 w-4" />
-          </button>
+          </Tooltip>
         </Flex>
         <SelectSeparator />
         <Text className="flex">
