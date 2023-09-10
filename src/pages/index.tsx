@@ -77,16 +77,78 @@ export default function Home() {
           ></Box>
         </Grid>
         <SelectSeparator />
-        <Grid>
-          <Box className="bg-light align-center col-span-2 flex h-full flex-col justify-center p-12 sm:col-span-1">
+        <h1 className="font-primary mx-auto flex justify-center text-4xl font-black">
+          How it Works
+        </h1>
+
+        <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3 ">
+          <div className="flex flex-col items-center">
             <Image
-              src="/assets/chef-serving-chicken.svg"
-              alt="soup"
-              width="500"
-              height="500"
-            />
-          </Box>
-        </Grid>
+              src="/images/web-design.svg"
+              alt="search"
+              height={300}
+              width={300}
+              className="mx-auto dark:invert"
+            ></Image>
+
+            <div className="flex flex-row items-center">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-orange-500 text-white dark:bg-sky-500">
+                1
+              </div>
+              <div className="ml-4 text-lg font-semibold ">
+                Search for your book
+              </div>
+            </div>
+
+            <div className="mt-2 text-center text-sm text-gray-600">
+              Search for the book you want to summarize.
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Image
+              src="/images/surreal-hourglass.svg"
+              alt="surreal-hourglass"
+              className="mx-auto dark:invert"
+              height={300}
+              width={300}
+            ></Image>
+
+            <div className="flex flex-row items-center">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-orange-500 text-white dark:bg-sky-500">
+                2
+              </div>
+              <div className="ml-4 text-lg font-semibold">
+                Wait for the magic
+              </div>
+            </div>
+            <div className="mt-2 text-center text-sm text-gray-600">
+              Our AI will summarize the book for you.
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <Image
+              src="/images/work-from-home.svg"
+              className="mx-auto dark:invert"
+              alt="work-from-home"
+              height={300}
+              width={300}
+            ></Image>
+
+            <div className="flex flex-row items-center">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-orange-500 text-white dark:bg-sky-500">
+                3
+              </div>
+              <div className="ml-4 text-lg font-semibold">
+                View your summary
+              </div>
+            </div>
+            <div className="mt-2 text-center text-sm text-gray-600">
+              View the summary and start studying!
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

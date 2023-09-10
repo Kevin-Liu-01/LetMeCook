@@ -5,7 +5,6 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   SelectSeparator,
-  Grid,
   RadioGroup,
   Flex,
   ScrollArea,
@@ -78,17 +77,18 @@ export default function Form({ image }: { image: string }) {
         </RadioGroup.Root>
         <SelectSeparator />
         <Text size="4">Dietary Restrictions?</Text>
-        <Grid columns="3" gap="3">
+        <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-3">
           <label>
             <Checkbox
               mr="1"
               checked={vegetarian}
               onCheckedChange={setVegetarian}
             />
-            Vegetarian
+            <Text size="2">Vegetarian</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={vegan} onCheckedChange={setVegan} /> Vegan
+            <Checkbox mr="1" checked={vegan} onCheckedChange={setVegan} />
+            <Text size="2">Vegan</Text>
           </label>
           <label>
             <Checkbox
@@ -96,7 +96,7 @@ export default function Form({ image }: { image: string }) {
               checked={eggetarian}
               onCheckedChange={setEggetarian}
             />
-            Eggetarian
+            <Text size="2">Eggetarian</Text>
           </label>
           <label>
             <Checkbox
@@ -104,27 +104,31 @@ export default function Form({ image }: { image: string }) {
               checked={pescatarian}
               onCheckedChange={setPescatarian}
             />
-            Pescatarian
+            <Text size="2">Pescatarian</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={keto} onCheckedChange={setKeto} /> Keto
+            <Checkbox mr="1" checked={keto} onCheckedChange={setKeto} />{" "}
+            <Text size="2">Keto</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={paleo} onCheckedChange={setPaleo} /> Paleo
+            <Checkbox mr="1" checked={paleo} onCheckedChange={setPaleo} />{" "}
+            <Text size="2">Paleo</Text>
           </label>
-        </Grid>
+        </div>
         <SelectSeparator />
         <Text size="4">Allergies?</Text>
-        <Grid columns="3" gap="3">
+        <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-3">
           <label>
             <Checkbox mr="1" checked={peanut} onCheckedChange={setPeanut} />{" "}
-            Peanut
+            <Text size="2">Peanut</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={egg} onCheckedChange={setEgg} /> Egg
+            <Checkbox mr="1" checked={egg} onCheckedChange={setEgg} />{" "}
+            <Text size="2">Egg</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={milk} onCheckedChange={setMilk} /> Milk
+            <Checkbox mr="1" checked={milk} onCheckedChange={setMilk} />{" "}
+            <Text size="2">Milk</Text>
           </label>
           <label>
             <Checkbox
@@ -132,15 +136,17 @@ export default function Form({ image }: { image: string }) {
               checked={shellfish}
               onCheckedChange={setShellfish}
             />{" "}
-            Shellfish
+            <Text size="2">Shellfish</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={wheat} onCheckedChange={setWheat} /> Wheat
+            <Checkbox mr="1" checked={wheat} onCheckedChange={setWheat} />{" "}
+            <Text size="2">Wheat</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={soy} onCheckedChange={setSoy} /> Soy
+            <Checkbox mr="1" checked={soy} onCheckedChange={setSoy} />{" "}
+            <Text size="2">Soy</Text>
           </label>
-        </Grid>
+        </div>
         <SelectSeparator />
 
         <Text size="4">Calories</Text>
@@ -156,22 +162,24 @@ export default function Form({ image }: { image: string }) {
 
         <Text size="4">Cooking Method</Text>
 
-        <Grid columns="3" gap="3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <label>
-            <Checkbox mr="1" checked={stove} onCheckedChange={setStove} /> Stove
+            <Checkbox mr="1" checked={stove} onCheckedChange={setStove} />
+            <Text size="2">Stove</Text>
           </label>
           <label>
             <Checkbox
               mr="1"
               checked={microwave}
               onCheckedChange={setMicrowave}
-            />{" "}
-            Microwave
+            />
+            <Text size="2">Microwave</Text>
           </label>
           <label>
-            <Checkbox mr="1" checked={oven} onCheckedChange={setOven} /> Oven
+            <Checkbox mr="1" checked={oven} onCheckedChange={setOven} />
+            <Text size="2">Oven</Text>
           </label>
-        </Grid>
+        </div>
         <SelectSeparator />
 
         <Text size="4">Time Limit</Text>
@@ -211,13 +219,37 @@ export default function Form({ image }: { image: string }) {
               },
             }}
           >
-            {" "}
-            <Button className="font-secondary w-48 hover:animate-pulse">
+            <Button className="font-secondary hover:animate-pulse sm:w-48">
               Use parameters <ArrowRightIcon className="h-4 w-4" />
             </Button>
           </Link>
-          <Link href="/recipe">
-            <button className="border-dark font-secondary flex h-full w-48 items-center justify-center rounded-md border hover:animate-pulse">
+          <Link
+            href={{
+              pathname: "/recipe",
+              query: {
+                image,
+                calories,
+                time,
+                meal,
+                vegetarian,
+                vegan,
+                eggetarian,
+                pescatarian,
+                keto,
+                paleo,
+                peanut,
+                egg,
+                milk,
+                shellfish,
+                wheat,
+                soy,
+                stove,
+                microwave,
+                oven,
+              },
+            }}
+          >
+            <button className="border-dark font-secondary flex h-full items-center justify-center rounded-md border px-2 hover:animate-pulse sm:w-48">
               <Text size="2">Skip</Text> <ArrowRightIcon className="h-4 w-4" />
             </button>
           </Link>

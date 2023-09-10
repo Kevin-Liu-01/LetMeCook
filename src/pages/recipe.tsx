@@ -84,7 +84,7 @@ export default function Recipe() {
       {recipe ? (
         <div className="font-primary flex w-full flex-col items-center justify-center gap-12 bg-gray-100">
           <Grid columns="5" width="100%" height="100%">
-            <Box className="col-span-5 h-screen sm:col-span-3">
+            <Box className="col-span-5 sm:col-span-3 sm:h-screen">
               <Instructions
                 recipe={recipe}
                 newRecipe={newRecipe}
@@ -92,7 +92,7 @@ export default function Recipe() {
               />
             </Box>
 
-            <Box className="from-primary to-secondary col-span-5  h-screen bg-gradient-to-b sm:col-span-2">
+            <Box className="from-primary to-secondary col-span-5  bg-gradient-to-b sm:col-span-2 sm:h-screen">
               <Ingredients recipe={recipe} />
             </Box>
           </Grid>

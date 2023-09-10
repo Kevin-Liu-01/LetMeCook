@@ -46,15 +46,19 @@ export default function Ingredients({ recipe }: { recipe: Recipe }) {
           return (
             <div
               key={index}
-              className="bg-light border-dark mb-2 grid grid-cols-2 gap-6 rounded-md border p-2"
+              className="bg-light border-dark mb-2 grid grid-cols-6 gap-6 rounded-md border p-2 sm:grid-cols-2"
             >
-              <div>
+              <div className="col-span-2 sm:col-span-1">
                 <h3 className="text-xl font-semibold">
                   {ingredient?.ingredient}
                 </h3>
                 <p>{ingredient?.portion}</p>
               </div>
-              <Grid columns="2" gap="6">
+              <Grid
+                columns="2"
+                gap="6"
+                className="col-span-4 gap-3 sm:col-span-1 sm:gap-6"
+              >
                 <div className="flex flex-col">
                   <p>Calories: {ingredient?.calories}</p>
                   <p>Protein: {ingredient?.protein}</p>

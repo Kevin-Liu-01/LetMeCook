@@ -28,9 +28,10 @@ def detect_objects():
     base64_image = data.get('image')
 
     client = vision.ImageAnnotatorClient()
-    image = vision.Image(content=base64.b64decode(base64_image))
+    image = vision.Image(content=base64.b64decode(base64_image[23:]))
     response = client.object_localization(image=image)
     objects = response.localized_object_annotations
+    print(objects)
 
     detected_objects = []
     for obj in objects:
@@ -97,7 +98,7 @@ def getRecipe(mealVal, restrictions, allergiesVal, calories, method, time, ingre
     api_key = "HIDDEN"
     openai.api_key = api_key
 
-    prompt = f"Create a recipe using some/all of these ingredients as you see fit: {', '.join(ingredients)}. The recipe should include detailed instructions. Here are the 'dietary_restrictions': {', '.join(dietaryRestrictions)}. Here is what the user is allergic to: {', '.join(allergies)}. Here are possible ways the user can cook the meal: {', '.join(cookingMethods)}. The max time limit for the meal is {timeLimit}. Here is the MAX number of calories the meal should be: {cals}... Give me my response as a JSON with the 'name', 'ingredients', 'instructions' (unnumbered), 'nutritional_facts' as the keys. Under each ingredient include the 'portion', 'calories', 'protein', 'fat', 'carbs', and 'fibers'. Generate an array called 'dietary_restrictions' of all the dietary restrictions that the recipe follows"+'You should return an object in this format: { "name": "<name of the dish>", "ingredients": [ { "ingredient": "<Name of the ingredient>", "portion": "<Portion or measurement>", "calories": <Calories count>, "protein": <Protein count>, "fat": <Fat count>, "carbs": <Carbohydrate count>, "fibers": <Fiber count> }, ... // Repeated sections for other ingredients ], "instructions": [ "<Step 1 of cooking (unnumbered)>", "<Step 2 of cooking (unnumbered)>", ... // Repeated steps for all the cooking instructions (unnumbered)], "nutritional_facts": { "calories": <Total calories>, "protein": <Total protein>, "fat": <Total fat>, "carbs": <Total carbs>, "fibers": <Total fibers> }, "dietary_restrictions": ["<Dietary restriction 1>", "<Dietary restriction 2>", ...] }'
+    prompt = f"Create a new recipe using only these ingredients (you don't need to use all of them but you cannot use something that I am not giving you): {', '.join(ingredients)}. The recipe should include detailed instructions. Here are the 'dietary_restrictions': {', '.join(dietaryRestrictions)}. Here is what the user is allergic to: {', '.join(allergies)}. Here are possible ways the user can cook the meal: {', '.join(cookingMethods)}. The max time limit for the meal is {timeLimit}. Here is the MAX number of calories the meal should be: {cals}... Give me my response as a JSON with the 'name', 'ingredients', 'instructions' (unnumbered), 'nutritional_facts' as the keys. Under each ingredient include the 'portion', 'calories', 'protein', 'fat', 'carbs', and 'fibers'. Generate an array called 'dietary_restrictions' of all the dietary restrictions that the recipe follows"+'You should return an object in this format: { "name": "<name of the dish>", "ingredients": [ { "ingredient": "<Name of the ingredient>", "portion": "<Portion or measurement>", "calories": <Calories count>, "protein": <Protein count>, "fat": <Fat count>, "carbs": <Carbohydrate count>, "fibers": <Fiber count> }, ... // Repeated sections for other ingredients ], "instructions": [ "<Step 1 of cooking (unnumbered)>", "<Step 2 of cooking (unnumbered)>", ... // Repeated steps for all the cooking instructions (unnumbered)], "nutritional_facts": { "calories": <Total calories>, "protein": <Total protein>, "fat": <Total fat>, "carbs": <Total carbs>, "fibers": <Total fibers> }, "dietary_restrictions": ["<Dietary restriction 1>", "<Dietary restriction 2>", ...] }'
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
