@@ -74,7 +74,7 @@ export default function Recipe() {
       .catch((error) => {
         console.error("Error fetching recipe:", error);
       });
-  }, [searchParams, newRecipe]);
+  }, [newRecipe]);
 
   return (
     <>

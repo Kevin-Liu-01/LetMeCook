@@ -13,16 +13,22 @@ export default function DietaryTags({ dietary }: { dietary: string[] }) {
 
   return (
     <div className="mt-2 flex space-x-2">
-      {dietary?.map((tag) => (
-        <span
-          key={tag.toLowerCase()}
-          className={`rounded-full px-2 py-1 text-sm ${
-            tagStyles[tag.toLowerCase()]?.bg ?? "bg-gray-500"
-          } ${tagStyles[tag.toLowerCase()]?.text ?? "text-gray-950"}`}
-        >
-          {tag}
+      {dietary[0] ? (
+        dietary.map((tag) => (
+          <span
+            key={tag.toLowerCase()}
+            className={`rounded-full px-2 py-1 text-sm ${
+              tagStyles[tag.toLowerCase()]?.bg ?? "bg-gray-500"
+            } ${tagStyles[tag.toLowerCase()]?.text ?? "text-gray-950"}`}
+          >
+            {tag}
+          </span>
+        ))
+      ) : (
+        <span className="rounded-full bg-gray-500 px-2 py-1 text-sm text-gray-950">
+          No Tags
         </span>
-      ))}
+      )}
     </div>
   );
 }
